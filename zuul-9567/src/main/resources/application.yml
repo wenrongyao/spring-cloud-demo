@@ -1,0 +1,33 @@
+server:
+  port: 9567
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server-7001:7001/eureka/,http://eureka-server-7002:7002/eureka/,http://eureka-server-7003:7003/eureka/
+  instance:
+      instance-id: eureka-zull # 服务名称
+      prefer-ip-address: true # 显示ip地址
+
+info: # 点击注册列表未服务出现的信息
+  app.name: springcloud
+  company.name: www.honor.com
+  build.artifactId: @project.artifactId@
+  build.version: @project.version@
+spring:
+  application:
+    name: eureka-zuul
+
+zuul:
+  routes:
+    consumer:
+      path: /consumer/**
+      serviceId: eureka-consumer
+  # 1.关闭默认的映射规则（默认配置服务名称相同的路由）
+  # 2.默认配置的路由规则：localhost:10000/eureka-rest-ribbon/hello
+  # 3.关闭以后localhost:10000/eureka-rest-ribbon/hello就不能提供访问了，但是依然可以直接访问微服务客户端localhost:10000/hello
+  # 4.原来的服务没法直接关闭访问，可以把服务层放在内网中，zuul放在公网中
+  ignored-services: "*"
+  prefix: /v1 # 统一前缀
+

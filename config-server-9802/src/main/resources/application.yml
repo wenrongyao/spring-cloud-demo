@@ -1,0 +1,29 @@
+server:
+  port: 9802
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/wenrongyao/springcloudconfig/
+          search-paths: shared
+          username: # 公共仓库可以不写
+          password: # 公共仓库可以不写
+
+###### 向Eureka Server 注册自己
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server-7001:7001/eureka/,http://eureka-server-7002:7002/eureka/,http://eureka-server-7003:7003/eureka/
+  instance:
+    instance-id: config-server-9802 # 服务名称
+    prefer-ip-address: true # 显示ip地址
+
+info: # 点击注册列表未服务出现的信息
+  app.name: springcloud
+  company.name: www.honor.com
+  build.artifactId: @project.artifactId@
+  build.version: @project.version@

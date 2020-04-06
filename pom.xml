@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.honor</groupId>
+    <artifactId>spring-cloud-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>eureka-server-7001</module>
+        <module>eureka-provider-8001</module>
+        <module>eureka-server-7002</module>
+        <module>eureka-server-7003</module>
+        <module>eureka-provider-8002</module>
+        <module>eureka-provider-8003</module>
+        <module>eureka-consumer-ribbon-9001</module>
+        <module>interface</module>
+        <module>eureka-consumer-feign-9002</module>
+        <module>eureka-consumer-ribbon-hystrix-9001</module>
+        <module>eureka-consumer-feign-hystrix-9002</module>
+        <module>eureka-consumer-hystrix-dashbord-10001</module>
+        <module>zuul-9567</module>
+        <module>config-server-9800</module>
+        <module>config-client-9900</module>
+        <module>config-server-9801</module>
+        <module>config-server-9802</module>
+    </modules>
+    <packaging>pom</packaging>
+    <description>父工程</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
+        <!--springboot与springcloud的版本对应 https://spring.io/projects/spring-cloud#overview-->
+        <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--使用import可以实现多继承-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <finalName>SpringCloud</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

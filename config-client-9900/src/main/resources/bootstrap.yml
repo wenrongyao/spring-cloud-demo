@@ -1,0 +1,38 @@
+#####单机版Config Server 直连#######
+#spring:
+#  application:
+#    name: config-client
+#  cloud:
+#    config:
+#      uri: http://localhost:9800 #服务端地址
+#      fail-fast: true
+#      profile: dev    # 启用的profile
+#      label: release1.0 # 启用的分支
+
+
+#####集群版Config Server从Eureka Server获取服务#######
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: release1.0
+      discovery:
+        service-id: config-server
+        enabled: true
+      fail-fast: true
+      profile: dev
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server-7001:7001/eureka/,http://eureka-server-7002:7002/eureka/,http://eureka-server-7003:7003/eureka/
+  instance:
+    instance-id: config-client-9900 # 服务名称
+    prefer-ip-address: true # 显示ip地址
+
+info: # 点击注册列表未服务出现的信息
+  app.name: springcloud
+  company.name: www.honor.com
+  build.artifactId: @project.artifactId@
+  build.version: @project.version@
