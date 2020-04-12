@@ -27,3 +27,9 @@ info: # 点击注册列表未服务出现的信息
   company.name: www.honor.com
   build.artifactId: @project.artifactId@
   build.version: @project.version@
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh  # 开启刷新配置

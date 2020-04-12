@@ -36,6 +36,7 @@
         <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
         <!--springboot与springcloud的版本对应 https://spring.io/projects/spring-cloud#overview-->
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <redis-appender.version>1.1.5</redis-appender.version>
     </properties>
 
     <dependencyManagement>
@@ -54,6 +55,12 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.cwbase</groupId>
+                <artifactId>logback-redis-appender</artifactId>
+                <version>${redis-appender.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -18,4 +18,6 @@ info: # 点击注册列表未服务出现的信息
 
 spring:
   application:
-    name: eureka-provider
+    name: eureka-provider # 三台服务必须一致
+  zipkin:
+    base-url: http://localhost:9411

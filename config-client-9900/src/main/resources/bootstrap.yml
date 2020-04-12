@@ -22,6 +22,15 @@ spring:
         enabled: true
       fail-fast: true
       profile: dev
+    bus:
+      enabled: true  #默认配置 可以不写
+      refresh:
+        enabled: true  #默认配置 可以不写
+  rabbitmq:
+    host: localhost  #默认配置 可以不写
+    port: 5672      #默认配置 可以不写
+    username: guest   #默认配置 可以不写
+    password: guest   #默认配置 可以不写
 
 eureka:
   client:
@@ -36,3 +45,10 @@ info: # 点击注册列表未服务出现的信息
   company.name: www.honor.com
   build.artifactId: @project.artifactId@
   build.version: @project.version@
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh  # 开启刷新配置
+
