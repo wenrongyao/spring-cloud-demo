@@ -17,3 +17,9 @@ EureKa Server注册中心集群搭建，服务提供者都向Server注册，消�
 ### 5. Spring Cloud Conifg
 所有微服务的配置集中统一管理，通过Config Server做统一交互，Config Client可以从Config Server获取指定的配置文件
 Config Server将自己注册到Eureka Server中，Config Client（一般来说具体某个微服务）可以从Eureka Server获取具体的某一个Config Server
+
+### 6. Spring Cloud Bus
+Bus总线，用来广播一些需要让其他连接在该主题上的实例都知道的消息，配合Spring Cloud Config实现微服务应用配置信息的动态更新
+
+### 7. Sleuth链路追踪
+Redis+ELK实现日志收集，提供快速日志查询，zipkin查询各个链路耗时
