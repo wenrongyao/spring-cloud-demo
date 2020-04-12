@@ -21,5 +21,5 @@ Config Server将自己注册到Eureka Server中，Config Client（一般来说�
 ### 6. Spring Cloud Bus
 Bus总线，用来广播一些需要让其他连接在该主题上的实例都知道的消息，配合Spring Cloud Config实现微服务应用配置信息的动态更新
 
-### 7. Sleuth链路追踪
+### 7. Sleuth
 Redis+ELK实现日志收集，提供快速日志查询，zipkin查询各个链路耗时
